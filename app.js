@@ -21,6 +21,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+const db = require('./models');
+
+async function applyDataStructure() {
+    await db.sequelize.sync({ alter: true });
+}
+
+
+applyDataStructure();
 // Sincronizando o Sequelize (em dev)
 if (process.env.NODE_ENV !== 'production') {
     sequelize.sync({ force: true }) // use 'force: true' para recriar as tabelas a cada inicialização (útil em dev)
