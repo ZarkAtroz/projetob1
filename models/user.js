@@ -1,13 +1,11 @@
 // models/user.js
 const Sequelize = require('sequelize');
-const { SequelizeMethod } = require('sequelize/lib/utils');
 module.exports = (sequelize) =>{
     const User = sequelize.define('User',{
         id:{
             type: Sequelize.INTEGER,
-            autoicrement: true,
-            primaryKey:true,
-            allowNull:false
+            autoIncrement: true,
+            primaryKey:true
         },
         email:{
             type: Sequelize.STRING,
@@ -16,7 +14,7 @@ module.exports = (sequelize) =>{
         },
         data_nasc:{
             type: Sequelize.DATE,
-            allowNull: false
+            allowNull: true
         },
         password:{
             type: Sequelize.STRING,
